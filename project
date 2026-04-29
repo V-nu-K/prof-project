@@ -45,3 +45,17 @@ def generate_password():
     if len(alphabet) == 0:
         print("Error! You must select at least one character type.")
         return
+
+# Генерация пароля
+    password = ''.join(random.choice(alphabet) for _ in range(length))
+    
+    print("\n" + "="*30)
+    print(f"Generated password: {password}")
+    print("="*30)
+    
+    # Сохранение в файл
+    save = input("\nSave password to passwords.txt file? (yes/no): ").lower()
+    if save == 'yes':
+        with open("passwords.txt", "a", encoding="utf-8") as file:
+            file.write(f"Password: {password} (length: {length})\n")
+        print("✓ Password saved!")
