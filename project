@@ -27,3 +27,21 @@ def generate_password():
     except:
         length = 12
         print("Error! Set to 12 characters.")
+
+# Какие символы использовать
+    use_digits = input("Use digits? (yes/no): ").lower() == 'yes'
+    use_uppercase = input("Use uppercase letters? (yes/no): ").lower() == 'yes'
+    use_symbols = input("Use special characters (!@#$%^&*)? (yes/no): ").lower() == 'yes'
+    
+    # Собираем алфавит
+    alphabet = string.ascii_lowercase
+    if use_digits:
+        alphabet += string.digits
+    if use_uppercase:
+        alphabet += string.ascii_uppercase
+    if use_symbols:
+        alphabet += "!@#$%^&*()_+-=[]{}|;:,.<>?/"
+    
+    if len(alphabet) == 0:
+        print("Error! You must select at least one character type.")
+        return
