@@ -1,0 +1,29 @@
+# Генератор и анализатор паролей
+# Автор: Козлов Владимир Андреевич, ЭВМбз-25-1
+
+import random
+import string
+
+def show_menu():
+    print("\n" + "="*40)
+    print("     PASSWORD GENERATOR AND ANALYZER")
+    print("="*40)
+    print("1 - Generate random password")
+    print("2 - Check password strength")
+    print("3 - Exit")
+    print("="*40)
+
+def generate_password():
+    print("\n--- PASSWORD GENERATION ---")
+    
+    try:
+        length = int(input("Enter password length (6 to 30): "))
+        if length < 6:
+            length = 6
+            print("Too short. Set to 6 characters.")
+        if length > 30:
+            length = 30
+            print("Too long. Set to 30 characters.")
+    except:
+        length = 12
+        print("Error! Set to 12 characters.")
