@@ -68,7 +68,6 @@ def check_strength():
     score = 0
     issues = []
     
-    # Check length
     if len(password) >= 12:
         score += 2
     elif len(password) >= 8:
@@ -76,27 +75,67 @@ def check_strength():
     else:
         issues.append("Too short (less than 8 characters)")
     
-    # Check digits
     if any(c.isdigit() for c in password):
         score += 1
     else:
         issues.append("No digits")
     
-    # Check uppercase letters
     if any(c.isupper() for c in password):
         score += 1
     else:
         issues.append("No uppercase letters")
     
-    # Check lowercase letters
     if any(c.islower() for c in password):
         score += 1
     else:
         issues.append("No lowercase letters")
     
-    # Check special characters
     special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/"
     if any(c in special_chars for c in password):
         score += 2
     else:
         issues.append("No special characters")
+
+# Вывод результата
+    print("\n" + "="*40)
+    print("CHECK RESULT:")
+    print("-"*40)
+    
+    if score >= 6:
+        print("✓ Excellent password! Very strong.")
+    elif score >= 4:
+        print("⚠ Average password. Can be improved.")
+    else:
+        print("✗ Weak password. Recommended to change.")
+    
+    print(f"Score: {score} out of 7")
+    
+    if issues:
+        print("\nWhat to improve:")
+        for issue in issues:
+            print(f"  • {issue}")
+    
+    print("="*40)
+
+def main():
+    print("\nWELCOME TO PASSWORD GENERATOR")
+    print("Version 1.0")
+    
+    while True:
+        show_menu()
+        choice = input("\nSelect option: ")
+        
+        if choice == '1':
+            generate_password()
+        elif choice == '2':
+            check_strength()
+        elif choice == '3':
+            print("\nGoodbye! Keep your passwords safe!")
+            break
+        else:
+            print("Error! Choose 1, 2 or 3.")
+        
+        input("\nPress Enter to continue...")
+
+if __name__ == "__main__":
+    main()
